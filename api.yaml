@@ -1,0 +1,234 @@
+swagger: '2.0'
+info:
+  description: testing this stuff
+  version: 1.0.0
+  title: SOG Seller API
+  # put the contact info for your development or API team
+  contact:
+    email: mpannella@sourceofgoods.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# tags are used for organizing operations
+tags:
+- name: sellers
+  description: Secured Seller-only calls
+
+paths:
+  /products:
+    get:
+      tags:
+      - sellers
+      summary: Get products
+      operationId: productsGet
+      description: |
+        Retrieve list of all products, or just one by sku
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: sku
+        description: item sku
+        required: false
+        type: string
+      - in: query
+        name: limit
+        description: limit number of results
+        required: false
+        type: integer
+      - in: query
+        name: offset
+        description: offset from 0 
+        type: integer
+        required: false
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        400:
+          description: bad input parameter
+  /orders:
+    get:
+      tags:
+      - sellers
+      summary: Get orders
+      operationId: ordersGet
+      description: |
+        Get a list of orders
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: order_num
+        description: order number
+        required: false
+        type: string
+      - in: query
+        name: status
+        description: status of order
+        required: false
+        type: string
+      - in: query
+        name: channel
+        description: order channel
+        required: false
+        type: string
+      - in: query
+        name: from_date
+        description: starting date Y/m/d h:i:s
+        required: false
+        type: string
+      - in: query
+        name: to_date
+        description: ending date Y/m/d h:i:s
+        required: false
+        type: string
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Order'
+        400:
+          description: bad input parameter
+    post:
+      tags:
+      - sellers
+      summary: creates new order
+      operationId: orderPost
+      description: Add a new order into the system
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: orderInfo
+        description: Order information and items
+        schema:
+          $ref: '#/definitions/Order'
+      responses:
+        201:
+          description: order created
+        400:
+          description: invalid input, object invalid
+definitions:
+  Product:
+    properties:
+      sku:
+        type: string
+      name:
+        type: string
+      mpn:
+        type: string
+      upc:
+        type: string
+      asin:
+        type: string
+      description:
+        type: string
+      leadTime:
+        type: integer
+      leadTimeBusDays:
+        type: integer
+      size:
+        type: string
+      color:
+        type: string
+      cost:
+        type: string
+      ship48:
+        type: string
+      shipAKHI:
+        type: string
+      mapPrice:
+        type: string
+  OrderItem:
+    required:
+    - quantity
+    - sku
+    properties:
+      sku:
+        type: string
+      quantity:
+        type: integer
+      price:
+        type: string
+      shipping_price:
+        type: string
+  Order:
+    type: object
+    properties:
+      channel:
+        type: string
+        enum: [Amazon, Ebay, Custom Resource]
+      channel_order_id:
+        type: string
+      order_date:
+        type: string
+        format: date
+      ship_by_date:
+        type: string
+        format: date
+      ship_name:
+        type: string
+      ship_address_1:
+        type: string
+      ship_address_2:
+        type: string
+      ship_city:
+        type: string
+      ship_state:
+        type: string
+      ship_zip:
+        type: string
+        minLength: 7
+        maxLength: 7
+      ship_country:
+        type: string
+      bill_name:
+        type: string
+      bill_address_1:
+        type: string
+      bill_address_2:
+        type: string
+      bill_city:
+        type: string
+      bill_zip:
+        type: string
+        minLength: 7
+        maxLength: 7
+      bill_country:
+        type: string
+      phone:
+        type: string
+      email:
+        type: string
+      order_items:
+        type: array
+        items:
+          $ref: '#/definitions/OrderItem'
+    description: an order
+    required:
+      - channel
+      - channel_order_id
+      - email
+      - order_items
+      - phone
+      - ship_address_1
+      - ship_by_date
+      - ship_city
+      - ship_country
+      - ship_state
+      - ship_zip
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /Source-Of-Goods/sog/1.0.0
+schemes:
+ - https
