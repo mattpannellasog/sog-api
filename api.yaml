@@ -52,7 +52,7 @@ paths:
                   products:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Order'
+                      $ref: '#/components/schemas/Product'
         400:
           description: bad input parameter
           content: {}
