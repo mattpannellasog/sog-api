@@ -80,14 +80,24 @@ paths:
         type: string
       - in: query
         name: from_date
-        description: starting date Y/m/d h:i:s
+        description: starting datetime ISO-8601
         required: false
         type: string
       - in: query
         name: to_date
-        description: ending date Y/m/d h:i:s
+        description: ending datetime ISO-8601
         required: false
         type: string
+      - in: query
+        name: limit
+        description: limit number of results
+        required: false
+        type: integer
+      - in: query
+        name: offset
+        description: offset from 0 
+        type: integer
+        required: false
       responses:
         200:
           description: search results matching criteria
@@ -142,13 +152,16 @@ definitions:
       color:
         type: string
       cost:
-        type: string
+        type: number
+        format: float
       ship48:
-        type: string
-      shipAKHI:
-        type: string
+        type: number
+        format: float
       mapPrice:
-        type: string
+        type: number
+        format: float
+      quantityAvailable:
+        type: integer
   OrderItem:
     required:
     - quantity
@@ -159,9 +172,11 @@ definitions:
       quantity:
         type: integer
       price:
-        type: string
+        type: number
+        format: float
       shipping_price:
-        type: string
+        type: number
+        format: float
   Order:
     type: object
     properties:
