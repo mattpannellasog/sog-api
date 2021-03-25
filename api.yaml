@@ -14,20 +14,39 @@ tags:
   - name: sellers
     description: Secured Seller-only calls
 paths:
+  /products/{sku}:
+    get:
+      tags:
+        - sellers
+      summary: Get info for one product
+      description: Retrieve info about the given product sku
+      operationId: productGet
+      parameters:
+      - name: sku
+        in: path
+        description: SKU of product to return
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '400':
+          description: bad input parameter
+          content: {}
   /products:
     get:
       tags:
         - sellers
       summary: Get products
       description: |
-        Retrieve list of all products, or just one by sku
+        Retrieve list of all products
       operationId: productsGet
       parameters:
-        - name: sku
-          in: query
-          description: item sku
-          schema:
-            type: string
         - name: limit
           in: query
           description: limit number of results
@@ -56,6 +75,30 @@ paths:
         '400':
           description: bad input parameter
           content: {}
+  /orders/{order_id}:
+    get:
+      tags:
+        - sellers
+      summary: Get one order
+      description: Retrieve details for a single order
+      operationId: orderGet
+      parameters:
+      - name: order_id
+        in: path
+        description: Order number of order to return
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          description: bad input parameter
+          content: {}
   /orders:
     get:
       tags:
@@ -65,11 +108,6 @@ paths:
         Get a list of orders
       operationId: ordersGet
       parameters:
-        - name: order_num
-          in: query
-          description: order number
-          schema:
-            type: string
         - name: status
           in: query
           description: status of order
@@ -143,6 +181,30 @@ paths:
       x-codegen-request-body-name: orderInfo
 components:
   schemas:
+    Address:
+      type: object
+      required:
+        - name
+        - address_1
+        - city
+        - state
+        - country
+        - zip
+      properties:
+        name:
+          type: string
+        address_1:
+          type: string
+        address_2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        zip:
+          type: integer
     Product:
       type: object
       properties:
@@ -177,6 +239,7 @@ components:
           format: float
         quantityAvailable:
           type: integer
+          readOnly: true
         weight:
           type: number
           description: in lbs
@@ -201,6 +264,9 @@ components:
         shipping_price:
           type: number
           format: float
+        tracking:
+          type: string
+          readOnly: true
     Order:
       required:
         - channel
@@ -208,14 +274,12 @@ components:
         - email
         - order_items
         - phone
-        - ship_address_1
-        - ship_by_date
-        - ship_city
-        - ship_country
-        - ship_state
-        - ship_zip
+        - ship_contact
       type: object
       properties:
+        order_id:
+          type: integer
+          readOnly: true
         channel:
           type: string
           enum:
@@ -230,40 +294,20 @@ components:
         ship_by_date:
           type: string
           format: date
-        ship_name:
-          type: string
-        ship_address_1:
-          type: string
-        ship_address_2:
-          type: string
-        ship_city:
-          type: string
-        ship_state:
-          type: string
-        ship_zip:
-          maxLength: 7
-          minLength: 7
-          type: string
-        ship_country:
-          type: string
-        bill_name:
-          type: string
-        bill_address_1:
-          type: string
-        bill_address_2:
-          type: string
-        bill_city:
-          type: string
-        bill_zip:
-          maxLength: 7
-          minLength: 7
-          type: string
-        bill_country:
-          type: string
+        ship_contact:
+          $ref: '#/components/schemas/Address'
+        bill_contact:
+          $ref: '#/components/schemas/Address'
         phone:
           type: string
         email:
           type: string
+        tracking:
+          type: string
+          readOnly: true
+        carrier:
+          type: string
+          readOnly: true
         order_items:
           type: array
           items:
