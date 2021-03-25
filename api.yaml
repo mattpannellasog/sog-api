@@ -99,6 +99,32 @@ paths:
         '400':
           description: bad input parameter
           content: {}
+    put:
+      tags:
+        - sellers
+      summary: Update order
+      description: Update an existing order
+      operationId: orderPut
+      parameters:
+      - name: order_id
+        in: path
+        description: Order number of order to return
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: Order information and items
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '204':
+          description: order updated
+          content: {}
+        '400':
+          description: 'invalid input, object invalid'
+          content: {}
   /orders:
     get:
       tags:
@@ -178,7 +204,6 @@ paths:
         '400':
           description: 'invalid input, object invalid'
           content: {}
-      x-codegen-request-body-name: orderInfo
 components:
   schemas:
     Address:
@@ -308,6 +333,12 @@ components:
         carrier:
           type: string
           readOnly: true
+        total:
+          type: number
+          format: float
+        seller_cost_total:
+          type: number
+          format: float
         order_items:
           type: array
           items:
