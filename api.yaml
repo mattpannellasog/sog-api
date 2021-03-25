@@ -4,9 +4,6 @@ info:
   description: testing this stuff
   contact:
     email: mpannella@sourceofgoods.com
-  license:
-    name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
   version: 1.0.0-oas3
 servers:
   - url: 'https://virtserver.swaggerhub.com/Source-Of-Goods/sog/1.0.0'
