@@ -50,9 +50,9 @@ paths:
           description: limit number of results
           schema:
             type: integer
-        - name: offset
+        - name: cursor
           in: query
-          description: offset from 0
+          description: pointer used for pagination
           schema:
             type: integer
       responses:
@@ -63,9 +63,9 @@ paths:
               schema:
                 type: object
                 properties:
-                  offset:
+                  cursor:
                     type: integer
-                    description: 'the offset id to be used in future calls, for pagination'
+                    description: 'the pointer used for pagination'
                   products:
                     type: array
                     items:
@@ -159,9 +159,9 @@ paths:
           description: limit number of results
           schema:
             type: integer
-        - name: offset
+        - name: cursor
           in: query
-          description: offset from 0
+          description: pointer used for pagination
           schema:
             type: integer
       responses:
@@ -172,9 +172,9 @@ paths:
               schema:
                 type: object
                 properties:
-                  offset:
+                  cursor:
                     type: integer
-                    description: 'the offset id to b e used in future calls, for pagination'
+                    description: 'the pointer used for pagination'
                   orders:
                     type: array
                     items:
