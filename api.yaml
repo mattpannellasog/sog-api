@@ -7,6 +7,7 @@ info:
   version: 1.0.0-oas3
 servers:
   - url: 'https://virtserver.swaggerhub.com/Source-Of-Goods/sog/1.0.0'
+  - url: 'https://www.sourceofgoods.com/api'
 tags:
   - name: sellers
     description: Secured Seller-only calls
@@ -173,7 +174,7 @@ paths:
                 properties:
                   offset:
                     type: integer
-                    description: 'the offset id to be used in future calls, for pagination'
+                    description: 'the offset id to b e used in future calls, for pagination'
                   orders:
                     type: array
                     items:
