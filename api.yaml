@@ -9,13 +9,15 @@ servers:
   - url: 'https://virtserver.swaggerhub.com/Source-Of-Goods/sog/1.0.0'
   - url: 'https://www.sourceofgoods.com/api'
 tags:
-  - name: sellers
+  - name: orders
+    description: Secured Seller-only calls
+  - name: products
     description: Secured Seller-only calls
 paths:
   /products/{sku}:
     get:
       tags:
-        - sellers
+        - products
       summary: Get info for one product
       description: Retrieve info about the given product sku
       operationId: productGet
@@ -39,7 +41,7 @@ paths:
   /products:
     get:
       tags:
-        - sellers
+        - products
       summary: Get products
       description: |
         Retrieve list of all products
@@ -76,7 +78,7 @@ paths:
   /orders/{order_id}:
     get:
       tags:
-        - sellers
+        - orders
       summary: Get one order
       description: Retrieve details for a single order
       operationId: orderGet
@@ -99,7 +101,7 @@ paths:
           content: {}
     put:
       tags:
-        - sellers
+        - orders
       summary: Update order
       description: Update an existing order
       operationId: orderPut
@@ -126,7 +128,7 @@ paths:
   /orders:
     get:
       tags:
-        - sellers
+        - orders
       summary: Get orders
       description: |
         Get a list of orders
@@ -184,7 +186,7 @@ paths:
           content: {}
     post:
       tags:
-        - sellers
+        - orders
       summary: creates new order
       description: Add a new order into the system
       operationId: orderPost
