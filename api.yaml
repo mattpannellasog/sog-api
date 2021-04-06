@@ -203,6 +203,10 @@ paths:
           description: 'invalid input, object invalid'
           content: {}
 components:
+  securitySchemes:
+      basicAuth:
+        type: http
+        scheme: basic
   schemas:
     Address:
       type: object
@@ -342,3 +346,5 @@ components:
           items:
             $ref: '#/components/schemas/OrderItem'
       description: an order
+security:
+  - basicAuth: []
