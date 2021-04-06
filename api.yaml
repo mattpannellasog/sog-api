@@ -6,8 +6,8 @@ info:
     email: mpannella@sourceofgoods.com
   version: 1.0.0-oas3
 servers:
+  - url: 'https://www.sourceofgoods.com/api2'
   - url: 'https://virtserver.swaggerhub.com/Source-Of-Goods/sog/1.0.0'
-  - url: 'https://www.sourceofgoods.com/api'
 tags:
   - name: orders
     description: Secured Seller-only calls
