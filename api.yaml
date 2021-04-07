@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: SOG Seller API
-  description: testing this stuff
+  description: Basic APIfor Sellers to access orders and products in Source of Goods
   contact:
     email: mpannella@sourceofgoods.com
   version: 1.0.0-oas3
