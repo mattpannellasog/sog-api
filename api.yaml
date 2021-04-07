@@ -44,7 +44,7 @@ paths:
         - products
       summary: Get products
       description: |
-        Retrieve list of all products, Limit of 5000 records per call
+        Retrieve list of all products, Default limit of 5000 records per call
       operationId: productsGet
       parameters:
         - name: limit
@@ -131,7 +131,7 @@ paths:
         - orders
       summary: Get orders
       description: |
-        Get a list of orders, by default it only shows the current year. Limit of 5000 records per call
+        Get a list of orders, by default it only shows the current year. Default limit of 5000 records per call
       operationId: ordersGet
       parameters:
         - name: status
