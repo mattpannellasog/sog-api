@@ -394,6 +394,10 @@ components:
           $ref: '#/components/schemas/Address'
         billContact:
           $ref: '#/components/schemas/Address'
+        orderItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
       description: Order details that are patchable
 security:
   - basicAuth: []
