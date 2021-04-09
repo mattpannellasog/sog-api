@@ -309,9 +309,11 @@ components:
         price:
           type: number
           format: float
+          readOnly: true
         shippingPrice:
           type: number
           format: float
+          readOnly: true
         tracking:
           type: string
           readOnly: true
