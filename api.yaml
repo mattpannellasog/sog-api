@@ -99,12 +99,12 @@ paths:
         '400':
           description: bad input parameter
           content: {}
-    put:
+    patch:
       tags:
         - orders
-      summary: Update order
+      summary: Update an order
       description: Update an existing order
-      operationId: orderPut
+      operationId: orderPatch
       parameters:
       - name: orderId
         in: path
@@ -113,13 +113,13 @@ paths:
         schema:
           type: integer
       requestBody:
-        description: Order information and items
+        description: Order information
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Order'
+              $ref: '#/components/schemas/OrderPatch'
       responses:
-        '204':
+        '200':
           description: order updated
           content: {}
         '400':
@@ -379,5 +379,21 @@ components:
           items:
             $ref: '#/components/schemas/OrderItem'
       description: an order
+    OrderPatch:
+      type: object
+      properties:
+        channel:
+          type: string
+          enum:
+            - Amazon
+            - Ebay
+            - Custom Resource
+        channelOrderId:
+          type: string
+        shipContact:
+          $ref: '#/components/schemas/Address'
+        billContact:
+          $ref: '#/components/schemas/Address'
+      description: Order details that are patchable
 security:
   - basicAuth: []
