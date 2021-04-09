@@ -103,7 +103,7 @@ paths:
       tags:
         - orders
       summary: Update an order
-      description: Update an existing order
+      description: Update an existing order. All products in "orderItems" will be added to the order
       operationId: orderPatch
       parameters:
       - name: orderId
