@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: SOG Seller API
-  description: Basic APIfor Sellers to access orders and products in Source of Goods
+  description: Basic API for Sellers to access orders and products in Source of Goods
   contact:
     email: mpannella@sourceofgoods.com
   version: 1.0.0-oas3
@@ -75,7 +75,7 @@ paths:
         '400':
           description: bad input parameter
           content: {}
-  /orders/{order_id}:
+  /orders/{orderId}:
     get:
       tags:
         - orders
@@ -83,7 +83,7 @@ paths:
       description: Retrieve details for a single order
       operationId: orderGet
       parameters:
-      - name: order_id
+      - name: orderId
         in: path
         description: Order number of order to return
         required: true
@@ -106,7 +106,7 @@ paths:
       description: Update an existing order
       operationId: orderPut
       parameters:
-      - name: order_id
+      - name: orderId
         in: path
         description: Order number of order to return
         required: true
@@ -144,13 +144,13 @@ paths:
           description: order channel
           schema:
             type: string
-        - name: from_date
+        - name: fromDate
           in: query
           description: starting datetime ISO-8601
           schema:
             type: string
             format: date-time
-        - name: to_date
+        - name: toDate
           in: query
           description: ending datetime ISO-8601
           schema:
@@ -221,7 +221,7 @@ components:
       type: object
       required:
         - name
-        - address_1
+        - address1
         - city
         - state
         - country
@@ -229,9 +229,9 @@ components:
       properties:
         name:
           type: string
-        address_1:
+        address1:
           type: string
-        address_2:
+        address2:
           type: string
         city:
           type: string
@@ -240,7 +240,9 @@ components:
         country:
           type: string
         zip:
-          type: integer
+          type: string
+          minLength: 4
+          maxLength: 10
     Product:
       type: object
       properties:
@@ -297,7 +299,7 @@ components:
         price:
           type: number
           format: float
-        shipping_price:
+        shippingPrice:
           type: number
           format: float
         tracking:
@@ -306,14 +308,14 @@ components:
     Order:
       required:
         - channel
-        - channel_order_id
+        - channelOrderId
         - email
-        - order_items
+        - orderItems
         - phone
-        - ship_contact
+        - shipContact
       type: object
       properties:
-        order_id:
+        orderId:
           type: integer
           readOnly: true
         channel:
@@ -322,17 +324,17 @@ components:
             - Amazon
             - Ebay
             - Custom Resource
-        channel_order_id:
+        channelOrderId:
           type: string
-        order_date:
-          type: string
-          format: date
-        ship_by_date:
+        orderDate:
           type: string
           format: date
-        ship_contact:
+        shipByDate:
+          type: string
+          format: date
+        shipContact:
           $ref: '#/components/schemas/Address'
-        bill_contact:
+        billContact:
           $ref: '#/components/schemas/Address'
         phone:
           type: string
@@ -347,10 +349,10 @@ components:
         total:
           type: number
           format: float
-        seller_cost_total:
+        sellerCostTotal:
           type: number
           format: float
-        order_items:
+        orderItems:
           type: array
           items:
             $ref: '#/components/schemas/OrderItem'
