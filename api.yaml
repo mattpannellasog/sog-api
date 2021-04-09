@@ -305,6 +305,7 @@ components:
           type: string
         quantity:
           type: integer
+          minimum: 0
         price:
           type: number
           format: float
@@ -344,6 +345,7 @@ components:
             - "Canceled"
             - "Order on Hold - Awaiting Seller Payment"
             - "Partially Canceled"
+          readOnly: true
         channelOrderId:
           type: string
         orderDate:
