@@ -305,7 +305,7 @@ components:
           type: string
         quantity:
           type: integer
-          minimum: 0
+          minimum: 1
         price:
           type: number
           format: float
