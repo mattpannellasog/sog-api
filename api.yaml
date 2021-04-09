@@ -139,6 +139,15 @@ paths:
           description: status of order
           schema:
             type: string
+            enum:
+              - "Order Placed"
+              - "Order Received"
+              - "Processing"
+              - "Shipped"
+              - "Delivered"
+              - "Canceled"
+              - "Order on Hold - Awaiting Seller Payment"
+              - "Partially Canceled"
         - name: channel
           in: query
           description: order channel
@@ -324,6 +333,17 @@ components:
             - Amazon
             - Ebay
             - Custom Resource
+        status:
+          type: string
+          enum:
+            - "Order Placed"
+            - "Order Received"
+            - "Processing"
+            - "Shipped"
+            - "Delivered"
+            - "Canceled"
+            - "Order on Hold - Awaiting Seller Payment"
+            - "Partially Canceled"
         channelOrderId:
           type: string
         orderDate:
