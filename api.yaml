@@ -197,26 +197,21 @@ paths:
       tags:
         - orders
       summary: creates new orders
-      description: Add one or more new orders into the system
+      description: Add a new order into the system
       operationId: orderPost
       requestBody:
         description: Order information and items
         content:
           application/json:
             schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/Order'
-        required: false
+              $ref: '#/components/schemas/Order'
       responses:
         '201':
           description: order created
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Order'
+                $ref: '#/components/schemas/Order'
         '400':
           description: 'invalid input, object invalid'
           content: {}
