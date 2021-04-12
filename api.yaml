@@ -347,10 +347,10 @@ components:
           type: string
         orderDate:
           type: string
-          format: date
+          format: date-time
         shipByDate:
           type: string
-          format: date
+          format: date-time
         shipContact:
           $ref: '#/components/schemas/Address'
         billContact:
