@@ -364,6 +364,7 @@ components:
           type: string
         email:
           type: string
+          format: email
         tracking:
           type: string
           readOnly: true
