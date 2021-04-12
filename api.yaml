@@ -320,6 +320,7 @@ components:
         - orderItems
         - phone
         - shipContact
+        - shipByDate
       type: object
       properties:
         orderId:
