@@ -67,6 +67,18 @@ paths:
           description: filter by brand
           schema:
             type: string
+        - name: minCost
+          in: query
+          description: filter by minimum seller cost
+          schema:
+            type: number
+            format: float
+        - name: maxCost
+          in: query
+          description: filter by maximum seller cost
+          schema:
+            type: number
+            format: float
       responses:
         '200':
           description: search results matching criteria
