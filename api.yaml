@@ -62,6 +62,11 @@ paths:
           description: filter out out of stock items
           schema:
             type: boolean
+        - name: brand
+          in: query
+          description: filter by brand
+          schema:
+            type: string
       responses:
         '200':
           description: search results matching criteria
