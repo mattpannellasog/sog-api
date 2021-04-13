@@ -211,7 +211,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Order'
+                type: object
+                properties:
+                  order:
+                    $ref: '#/components/schemas/Order'
+                  productErrors:
+                    type: array
+                    description: 'list of products that were unable to be added to the order'
+                    items:
+                      type: string
         '400':
           description: 'invalid input, object invalid'
           content: {}
