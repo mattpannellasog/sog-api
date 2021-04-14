@@ -333,7 +333,7 @@ components:
       properties:
         sku:
           type: string
-          pattern: '^[a-zA-Z0-9-/+*]+$'
+          pattern: '^[-a-zA-Z0-9\/+*]+$'
         quantity:
           type: integer
           minimum: 1
@@ -382,7 +382,7 @@ components:
           readOnly: true
         channelOrderId:
           type: string
-          pattern: '^[a-zA-Z0-9-/+*#].$'
+          pattern: '^[-a-zA-Z0-9\/+*#]+$'
         orderDate:
           type: string
           format: date-time
@@ -395,7 +395,7 @@ components:
           $ref: '#/components/schemas/Address'
         phone:
           type: string
-          pattern: '^[0-9-]{10,14}$'
+          pattern: '^[-0-9]{10,14}$'
         email:
           type: string
           format: email
