@@ -395,7 +395,7 @@ components:
           $ref: '#/components/schemas/Address'
         phone:
           type: string
-          pattern: '^[-0-9a-zA-Z\.+ ]{10,}+$'
+          pattern: '^[-0-9a-zA-Z\.+ ]{10,}$'
         email:
           type: string
           format: email
