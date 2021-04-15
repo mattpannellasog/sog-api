@@ -97,6 +97,30 @@ paths:
         '400':
           description: bad input parameter
           content: {}
+  /products/inventory/{sku}:
+    get:
+      tags:
+        - products
+      summary: Get inventory for one product
+      description: Retrieve the quantity available for the given product sku
+      operationId: inventoryGet
+      parameters:
+      - name: sku
+        in: path
+        description: SKU of product to check inventory for
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Quantity
+          content:
+            application/json:
+              schema:
+                type: integer
+        '400':
+          description: bad input parameter
+          content: {}
   /orders/{orderId}:
     get:
       tags:
