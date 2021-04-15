@@ -235,8 +235,9 @@ paths:
               schema:
                 type: object
                 properties:
-                  order:
-                    $ref: '#/components/schemas/Order'
+                  orderId:
+                    type: integer
+                    description: The orderId of the new order
                   productErrors:
                     type: array
                     description: 'list of products that were unable to be added to the order'
