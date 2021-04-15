@@ -97,13 +97,48 @@ paths:
         '400':
           description: bad input parameter
           content: {}
+  /products/inventory:
+    get:
+      tags:
+        - products
+      summary: Get inventory for all products
+      description: Retrieve the quantity available for every product
+      operationId: inventoryGetAll
+      parameters:
+        - name: limit
+          in: query
+          description: limit number of results
+          schema:
+            type: integer
+        - name: cursor
+          in: query
+          description: pointer used for pagination
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Quantity
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    sku:
+                      type: string
+                    quantityAvailable:
+                      type: integer
+        '400':
+          description: bad input parameter
+          content: {}
   /products/inventory/{sku}:
     get:
       tags:
         - products
       summary: Get inventory for one product
       description: Retrieve the quantity available for the given product sku
-      operationId: inventoryGet
+      operationId: inventoryGetBySku
       parameters:
       - name: sku
         in: path
