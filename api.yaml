@@ -412,9 +412,11 @@ components:
         ship48:
           type: number
           format: float
+          description: Shipping price for 48 continental states
         shipAKHI:
           type: number
           format: float
+          description: Shipping price for AK and HI
     OrderItem:
       required:
         - quantity
