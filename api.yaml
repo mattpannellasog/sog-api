@@ -129,6 +129,9 @@ paths:
                       type: string
                     quantityAvailable:
                       type: integer
+                    price:
+                      type: number
+                      format: float
         '400':
           description: bad input parameter
           content: {}
@@ -152,7 +155,13 @@ paths:
           content:
             application/json:
               schema:
-                type: integer
+                type: object
+                properties:
+                  quantityAvailable:
+                    type: integer
+                  price:
+                    type: number
+                    format: float
         '400':
           description: bad input parameter
           content: {}
