@@ -500,9 +500,11 @@ components:
         total:
           type: number
           format: float
+          readOnly: true
         sellerCostTotal:
           type: number
           format: float
+          readOnly: true
         orderItems:
           type: array
           items:
