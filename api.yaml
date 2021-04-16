@@ -129,15 +129,7 @@ paths:
                   products:
                     type: array
                     items:
-                      type: object
-                      properties:
-                        sku:
-                          type: string
-                        quantityAvailable:
-                          type: integer
-                        cost:
-                          type: number
-                          format: float
+                      $ref: '#/components/schemas/ProductInventory'
         '400':
           description: bad input parameter
           content: {}
@@ -161,13 +153,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  quantityAvailable:
-                    type: integer
-                  cost:
-                    type: number
-                    format: float
+                $ref: '#/components/schemas/ProductInventory'
         '400':
           description: bad input parameter
           content: {}
@@ -385,6 +371,11 @@ components:
         ship48:
           type: number
           format: float
+          description: Shipping price for 48 continental states
+        shipAKHI:
+          type: number
+          format: float
+          description: Shipping price for AK and HI
         mapPrice:
           type: number
           format: float
@@ -402,6 +393,28 @@ components:
         image:
           type: string
           format: uri
+    ProductInventory:
+      required:
+        - sku
+        - cost
+        - quantityAvailable
+        - ship48
+        - shipAKHI
+      type: object
+      properties:
+        sku:
+          type: string
+        cost:
+          type: number
+          format: float
+        quantityAvailable:
+          type: integer
+        ship48:
+          type: number
+          format: float
+        shipAKHI:
+          type: number
+          format: float
     OrderItem:
       required:
         - quantity
