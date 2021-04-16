@@ -121,17 +121,23 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    sku:
-                      type: string
-                    quantityAvailable:
-                      type: integer
-                    price:
-                      type: number
-                      format: float
+                type: object
+                properties:
+                  cursor:
+                    type: integer
+                    description: 'the pointer used for pagination'
+                  products:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        sku:
+                          type: string
+                        quantityAvailable:
+                          type: integer
+                        price:
+                          type: number
+                          format: float
         '400':
           description: bad input parameter
           content: {}
