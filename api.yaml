@@ -151,7 +151,7 @@ paths:
           type: string
       responses:
         '200':
-          description: Quantity
+          description: Quantity and price
           content:
             application/json:
               schema:
