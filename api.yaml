@@ -209,6 +209,7 @@ paths:
         schema:
           type: integer
       requestBody:
+        required: true
         description: Order information
         content:
           application/json:
@@ -296,6 +297,7 @@ paths:
       description: Add a new order into the system
       operationId: orderPost
       requestBody:
+        required: true
         description: Order information and items
         content:
           application/json:
