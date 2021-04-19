@@ -44,7 +44,7 @@ paths:
         - products
       summary: Get products
       description: |
-        Retrieve list of all products, Default limit of 10000 records per call
+        Retrieve list of all products, Default limit of 10000 records per call. If a cursor is sent back with the results, pass it back up with the next call to receive the next page of data.
       operationId: productsGet
       parameters:
         - name: limit
@@ -101,7 +101,7 @@ paths:
     get:
       tags:
         - products
-      summary: Get inventory for all products
+      summary: Get inventory for all products. If a cursor is sent back with the results, pass it back up with the next call to receive the next page of data.
       description: Retrieve the quantity available for every product
       operationId: inventoryGetAll
       parameters:
@@ -214,7 +214,7 @@ paths:
         - orders
       summary: Get orders
       description: |
-        Get a list of orders, by default it only shows the current year. Default limit of 5000 records per call
+        Get a list of orders, by default it only shows the current year. Default limit of 5000 records per call. If a cursor is sent back with the results, pass it back up with the next call to receive the next page of data.
       operationId: ordersGet
       parameters:
         - name: status
