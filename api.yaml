@@ -384,9 +384,6 @@ components:
         mapPrice:
           type: number
           format: float
-        quantityAvailable:
-          type: integer
-          readOnly: true
         weight:
           type: number
           description: in lbs
