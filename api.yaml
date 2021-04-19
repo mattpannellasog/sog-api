@@ -7,7 +7,6 @@ info:
   version: 1.0.0-oas3
 servers:
   - url: 'https://www.sourceofgoods.com/api2'
-  - url: 'https://virtserver.swaggerhub.com/Source-Of-Goods/sog/1.0.0'
 tags:
   - name: orders
     description: API Calls for accessing and posting orders. Requires username and password sent via Basic Http Auth
