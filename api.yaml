@@ -313,6 +313,7 @@ components:
       basicAuth:
         type: http
         scheme: basic
+        description: Your username and password can be generated at https://www.sourceofgoods.com/api.php
   schemas:
     Address:
       type: object
