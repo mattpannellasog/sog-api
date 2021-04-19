@@ -138,7 +138,7 @@ paths:
       tags:
         - products
       summary: Get inventory for one product
-      description: Retrieve the quantity available for the given product sku
+      description: Retrieve the quantity available, and seller cost for the given product sku.
       operationId: inventoryGetBySku
       parameters:
       - name: sku
@@ -236,6 +236,10 @@ paths:
           description: order channel
           schema:
             type: string
+            enum:
+              - Amazon
+              - Ebay
+              - Custom Resource
         - name: fromDate
           in: query
           description: starting datetime ISO-8601
@@ -397,27 +401,18 @@ components:
     ProductInventory:
       required:
         - sku
-        - cost
+        - totalSellerCost
         - quantityAvailable
-        - ship48
-        - shipAKHI
       type: object
       properties:
         sku:
           type: string
-        cost:
+        totalSellerCost:
           type: number
           format: float
+          description: The total final cost. Includes product price, shipping cost, and markup.
         quantityAvailable:
           type: integer
-        ship48:
-          type: number
-          format: float
-          description: Shipping price for 48 continental states
-        shipAKHI:
-          type: number
-          format: float
-          description: Shipping price for AK and HI
     OrderItem:
       required:
         - quantity
