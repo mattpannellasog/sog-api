@@ -68,13 +68,13 @@ paths:
             type: string
         - name: minCost
           in: query
-          description: filter by minimum seller cost
+          description: filter by minimum base cost
           schema:
             type: number
             format: float
         - name: maxCost
           in: query
-          description: filter by maximum seller cost
+          description: filter by maximum base cost
           schema:
             type: number
             format: float
@@ -369,9 +369,14 @@ components:
           type: string
         color:
           type: string
-        cost:
+        baseCost:
           type: number
           format: float
+          description: Base cost of the item, before markup or shipping.
+        totalSellerCost:
+          type: number
+          format: float
+          description: The total final cost. Includes product price, shipping cost, and markup.
         ship48:
           type: number
           format: float
