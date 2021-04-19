@@ -101,8 +101,8 @@ paths:
     get:
       tags:
         - products
-      summary: Get inventory for all products. If a cursor is sent back with the results, pass it back up with the next call to receive the next page of data.
-      description: Retrieve the quantity available for every product
+      summary: Get inventory for all products
+      description: Retrieve the quantity available, and seller cost for every product. If a cursor is sent back with the results, pass it back up with the next call to receive the next page of data.
       operationId: inventoryGetAll
       parameters:
         - name: limit
