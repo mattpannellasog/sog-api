@@ -34,7 +34,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Product'
-        '400':
+        '422':
           description: bad input parameter
           content: {}
   /products:
@@ -93,7 +93,7 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Product'
-        '400':
+        '422':
           description: bad input parameter
           content: {}
   /products/inventory:
@@ -129,7 +129,7 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/ProductInventory'
-        '400':
+        '422':
           description: bad input parameter
           content: {}
   /products/inventory/{sku}:
@@ -153,7 +153,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProductInventory'
-        '400':
+        '422':
           description: bad input parameter
           content: {}
   /orders/{orderId}:
@@ -177,7 +177,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Order'
-        '400':
+        '422':
           description: bad input parameter
           content: {}
     patch:
@@ -203,8 +203,20 @@ paths:
       responses:
         '200':
           description: order updated
-          content: {}
-        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orderId:
+                    type: integer
+                    description: The orderId of the updated order
+                  productErrors:
+                    type: array
+                    description: 'list of products that were unable to be added to the order'
+                    items:
+                      type: string
+        '422':
           description: 'invalid input, object invalid'
           content: {}
   /orders:
@@ -276,7 +288,7 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Order'
-        '400':
+        '422':
           description: bad input parameter
           content: {}
     post:
@@ -308,7 +320,7 @@ paths:
                     description: 'list of products that were unable to be added to the order'
                     items:
                       type: string
-        '400':
+        '422':
           description: 'invalid input, object invalid'
           content: {}
 components:
