@@ -184,7 +184,7 @@ paths:
       tags:
         - orders
       summary: Update an order
-      description: Update an existing order. All products in "orderItems" will be added to the order. Orders can only be updated if they are still at the "Order Placed" status. 
+      description: Update an existing order. Any supplied fields will overright the existing one. Orders can only be updated if they are still at the "Order Placed" status. 
       operationId: orderPatch
       parameters:
       - name: orderId
