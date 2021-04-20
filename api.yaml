@@ -518,6 +518,12 @@ components:
             - Custom Resource
         channelOrderId:
           type: string
+        phone:
+          type: string
+          pattern: '^[-0-9a-zA-Z\.+ ]{10,}$'
+        email:
+          type: string
+          format: email
         shipContact:
           $ref: '#/components/schemas/Address'
         billContact:
