@@ -6,7 +6,7 @@ info:
     email: mpannella@sourceofgoods.com
   version: 1.0.0-oas3
 servers:
-  - url: 'https://www.sourceofgoods.com/api2'
+  - url: 'https://www.sourceofgoods.com/api'
 tags:
   - name: orders
     description: API Calls for accessing and posting orders. Requires username and password sent via Basic Http Auth
