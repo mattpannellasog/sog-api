@@ -34,6 +34,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Product'
+        '404':
+          description: 'Order not found'
+          content: {}
         '422':
           description: bad input parameter
           content: {}
@@ -153,6 +156,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProductInventory'
+        '404':
+          description: 'Product not found'
+          content: {}
         '422':
           description: bad input parameter
           content: {}
@@ -177,6 +183,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Order'
+        '404':
+          description: 'Order not found'
+          content: {}
         '422':
           description: bad input parameter
           content: {}
@@ -216,6 +225,9 @@ paths:
                     description: 'list of products that were unable to be added to the order'
                     items:
                       type: string
+        '404':
+          description: 'Order not found'
+          content: {}
         '422':
           description: 'invalid input, object invalid'
           content: {}
