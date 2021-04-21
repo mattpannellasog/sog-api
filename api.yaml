@@ -496,6 +496,7 @@ components:
         channelOrderId:
           type: string
           pattern: '^[-a-zA-Z0-9\/+*#]+$'
+          description: Alphanumeric string, may include special characters -/+#*
         orderDate:
           type: string
           format: date-time
@@ -509,6 +510,7 @@ components:
         phone:
           type: string
           pattern: '^[-0-9a-zA-Z\.+ ]{10,}$'
+          example: "+1 416-251-9136 ext. 2308"
         email:
           type: string
           format: email
@@ -545,6 +547,7 @@ components:
         phone:
           type: string
           pattern: '^[-0-9a-zA-Z\.+ ]{10,}$'
+          example: "+1 416-251-9136 ext. 2308"
         email:
           type: string
           format: email
