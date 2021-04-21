@@ -454,6 +454,10 @@ components:
           type: number
           format: float
           readOnly: true
+        sellerCost:
+          type: number
+          format: float
+          readOnly: true
         shippingPrice:
           type: number
           format: float
