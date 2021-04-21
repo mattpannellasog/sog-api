@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: SOG Seller API
-  description: Basic API for Sellers to access orders and products in Source of Goods
+  description: Basic API for Sellers to access orders and products in Source of Goods. Base URL - https://www.sourceofgoods.com/api
   contact:
     email: rafi@sourceofgoods.com
   version: 1.0.0-oas3
@@ -35,7 +35,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Product'
         '404':
-          description: 'Order not found'
+          description: 'Product not found'
           content: {}
         '422':
           description: bad input parameter
