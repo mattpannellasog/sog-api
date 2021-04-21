@@ -3,7 +3,7 @@ info:
   title: SOG Seller API
   description: Basic API for Sellers to access orders and products in Source of Goods
   contact:
-    email: mpannella@sourceofgoods.com
+    email: rafi@sourceofgoods.com
   version: 1.0.0-oas3
 servers:
   - url: 'https://www.sourceofgoods.com/api'
