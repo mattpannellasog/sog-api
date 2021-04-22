@@ -8,22 +8,22 @@ info:
 servers:
   - url: 'https://www.sourceofgoods.com/api'
 tags:
-  - name: orders
+  - name: Orders
     description: API Calls for accessing and posting orders. Requires username and password sent via Basic Http Auth
-  - name: products
+  - name: Products
     description: API Calls for accessing products and inventory. Requires username and password sent via Basic Http Auth
 paths:
   /products/{sku}:
     get:
       tags:
-        - products
+        - Products
       summary: Get info for one product
-      description: Retrieve info about the given product sku
+      description: Retrieve details for one product sku
       operationId: productGet
       parameters:
       - name: sku
         in: path
-        description: SKU of product to return
+        description: SKU of product to look up
         required: true
         schema:
           type: string
@@ -43,7 +43,7 @@ paths:
   /products:
     get:
       tags:
-        - products
+        - Products
       summary: Get products
       description: |
         Retrieve list of all products, Default limit of 10000 records per call. If a cursor is sent back with the results, pass it back up with the next call to receive the next page of data.
@@ -59,11 +59,6 @@ paths:
           description: pointer used for pagination
           schema:
             type: integer
-        - name: inStock
-          in: query
-          description: filter out out of stock items
-          schema:
-            type: boolean
         - name: brand
           in: query
           description: filter by brand
@@ -102,7 +97,7 @@ paths:
   /products/inventory:
     get:
       tags:
-        - products
+        - Products
       summary: Get inventory for all products
       description: Retrieve the quantity available, and seller cost for every product. If a cursor is sent back with the results, pass it back up with the next call to receive the next page of data.
       operationId: inventoryGetAll
@@ -117,6 +112,11 @@ paths:
           description: pointer used for pagination
           schema:
             type: integer
+        - name: inStock
+          in: query
+          description: filter out out of stock items
+          schema:
+            type: boolean
       responses:
         '200':
           description: Quantity
@@ -138,7 +138,7 @@ paths:
   /products/inventory/{sku}:
     get:
       tags:
-        - products
+        - Products
       summary: Get inventory for one product
       description: Retrieve the quantity available, and seller cost for the given product sku.
       operationId: inventoryGetBySku
@@ -165,7 +165,7 @@ paths:
   /orders/{orderId}:
     get:
       tags:
-        - orders
+        - Orders
       summary: Get one order
       description: Retrieve details for a single order
       operationId: orderGet
@@ -191,7 +191,7 @@ paths:
           content: {}
     patch:
       tags:
-        - orders
+        - Orders
       summary: Update an order
       description: Update an existing order. Any supplied fields will overright the existing one. Orders can only be updated if they are still at the "Order Placed" status. 
       operationId: orderPatch
@@ -234,7 +234,7 @@ paths:
   /orders:
     get:
       tags:
-        - orders
+        - Orders
       summary: Get orders
       description: |
         Get a list of orders, by default it only shows the current year, unless a fromDate is supplied. Default limit of 5000 records per call. If a cursor is sent back with the results, pass it back up with the next call to receive the next page of data.
@@ -305,7 +305,7 @@ paths:
           content: {}
     post:
       tags:
-        - orders
+        - Orders
       summary: creates new orders
       description: Add a new order into the system
       operationId: orderPost
