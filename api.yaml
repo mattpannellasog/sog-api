@@ -423,6 +423,10 @@ components:
         image:
           type: string
           format: uri
+        category:
+          type: string
+        categoryId:
+          type: integer
     ProductInventory:
       required:
         - sku
