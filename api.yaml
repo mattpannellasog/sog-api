@@ -76,6 +76,11 @@ paths:
           schema:
             type: number
             format: float
+        - name: categoryId
+          in: query
+          description: Filter by categoryId. All categories can be retrieved with the /products/categories API call
+          schema:
+            type: integer
       responses:
         '200':
           description: search results matching criteria
@@ -159,6 +164,25 @@ paths:
         '404':
           description: 'Product not found'
           content: {}
+        '422':
+          description: bad input parameter
+          content: {}
+  /products/categories:
+    get:
+      tags:
+        - Products
+      summary: Get category list
+      description: Retrieve the full list of product categories available in Source of Goods
+      operationId: categoriesGet
+      responses:
+        '200':
+          description: Search results matching criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
         '422':
           description: bad input parameter
           content: {}
@@ -423,7 +447,7 @@ components:
         image:
           type: string
           format: uri
-        category:
+        categoryName:
           type: string
         categoryId:
           type: integer
@@ -568,5 +592,15 @@ components:
           items:
             $ref: '#/components/schemas/OrderItem'
       description: Order details that are patchable
+    Category:
+      type: object
+      properties:
+        categoryId:
+          type: integer
+        categoryName:
+          type: string
+        parentCategoryId:
+          type: integer
+          description: The categoryId of this category's parent category
 security:
   - basicAuth: []
