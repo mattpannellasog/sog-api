@@ -96,9 +96,6 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Product'
-        '422':
-          description: bad input parameter
-          content: {}
   /products/inventory:
     get:
       tags:
