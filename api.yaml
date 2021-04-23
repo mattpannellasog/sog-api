@@ -81,9 +81,9 @@ paths:
           description: Filter by categoryId. All categories can be retrieved with the /products/categories API call
           schema:
             type: integer
-        - name: recurseCategories
+        - name: includeSubCategories
           in: query
-          description: If filtering by categoryId, set this to true to also retrieve products in all parent categories up the chain. For example, sneakers is a child of shoes, which is a child of clothing. Setting this flag to true, while filtering on shoes would include products in all 3 of those categories.
+          description: If filtering by categoryId, set this to true to also retrieve products in all of the sub categories beneath the given categoryId.
           schema:
             type: boolean
       responses:
